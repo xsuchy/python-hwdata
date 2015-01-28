@@ -9,7 +9,7 @@
 %endif
 
 Name:		python-hwdata
-Version:	2.3.0
+Version:	2.3.2
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -90,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Jan 28 2015 Miroslav Suchý <msuchy@redhat.com>
+- move upstream location
+
 * Wed Dec 04 2013 Miroslav Suchý <msuchy@redhat.com> 1.10.1-1
 - create python3-hwdata subpackage
 - Bumping package versions for 1.9
