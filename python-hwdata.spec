@@ -76,13 +76,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%doc LICENSE example.py
+%license LICENSE
+%doc README.md example.py
 %doc html
 %{python_sitelib}/*
 
 %if 0%{?with_python3}
 %files -n python3-hwdata
-%doc LICENSE example.py
+%license LICENSE
+%doc README.md example.py
 %doc html
 %{python3_sitelib}/*
 %endif
