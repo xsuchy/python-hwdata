@@ -47,3 +47,7 @@ When you run:
 tito build --rpm
 ```
 you will get latest rpm package.
+
+## Distributions
+
+This package is present in [Fedora and EPEL](http://koji.fedoraproject.org/koji/packageinfo?packageID=10271). You should be able to just `yum install python-hwdata`.
