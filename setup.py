@@ -3,9 +3,9 @@ from distutils.core import setup, Extension
 
 setup (name = 'pciutils',
        version = '2.3.3',
-       description = 'Interface to pciutils',
+       description = 'Interface to hwdata',
        author = 'Miroslav Suchý',
        author_email = 'msuchy@redhat.com',
        license = 'GPLv2',
-       url = 'https://fedorahosted.org/spacewalk/wiki/Projects/python-hwdata',
+       url = 'https://github.com/xsuchy/python-hwdata',
        py_modules = ['hwdata'])
