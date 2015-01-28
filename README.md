@@ -1,4 +1,4 @@
-# python-hwdata - python bindings to [https://fedorahosted.org/hwdata/ hwdata] package
+# python-hwdata
 
 Provides python interface to database stored in [hwdata](https://fedorahosted.org/hwdata/) package.
 It allows you to get human readable description of USB and PCI devices.
