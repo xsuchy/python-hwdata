@@ -4,7 +4,7 @@ Provides python interface to database stored in [hwdata](https://fedorahosted.or
 It allows you to get human readable description of USB and PCI devices.
 
 
-=== Example ===
+## Example
 
 ```
 #!/usr/bin/python
@@ -30,11 +30,11 @@ print("Vendor: %s" % usb.get_vendor(usb_vendor_id))
 print("Device: %s" % usb.get_device(usb_vendor_id, usb_device_id))
 ```
 
-== Upstream ==
+## Upstream
 
 https://github.com/xsuchy/python-hwdata
 
-== Get the code ==
+## Build package
 
 When you run:
 ```
