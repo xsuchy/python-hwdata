@@ -17,7 +17,7 @@ inPy3k = sys.version_info[0] == 3
 
 """ Query hwdata database and return decription of vendor and/or device. """
 
-class USB:
+class USB(object):
     """ Interace to usb.ids from hwdata package """
     filename = '/usr/share/hwdata/usb.ids'
     devices = None
@@ -102,7 +102,7 @@ class USB:
         else:
             raise # not implemented yet
 
-class PCI:
+class PCI(object):
     """ Interace to pci.ids from hwdata package """
     filename = '/usr/share/hwdata/pci.ids'
     devices = None
@@ -170,6 +170,52 @@ class PCI:
                     return PCI.devices[vendor][1][device]
                 else:
                     return None
+            else:
+                return None
+        else:
+            raise # not implemented yet
+
+class PNP(object):
+    """ Interace to pnp.ids from hwdata package """
+    filename = '/usr/share/hwdata/pnp.ids'
+    VENDORS = None
+
+    def __init__(self, filename=None):
+        """ Load pnp.ids from file to internal data structure.
+            parameter 'filename' can specify location of this file
+        """
+        if filename:
+            self.filename = filename
+        else:
+            self.filename = PNP.filename
+        self.cache = 1
+
+        if self.cache and not PNP.VENDORS:
+            # parse pnp.ids
+            pcirec = {}
+            PNP.VENDORS = {}
+            if inPy3k:
+                f = open(self.filename, encoding='ISO8859-1')
+            else:
+                f = open(self.filename)
+            for line in f.readlines():
+                l = line.split()
+                if line.startswith('#'):
+                    continue
+                elif len(l) == 0:
+                    continue
+                else:
+                    id = l[0].upper()
+                    PNP.VENDORS[id] = ' '.join(l[1:])
+
+    def get_vendor(self, vendor_id):
+        """ Return description of vendor. Parameter is 3 character long id of vendor.
+            If vendor is unknown None is returned.
+        """
+        vendor_id = vendor_id.upper()
+        if self.cache:
+            if vendor_id in list(PNP.VENDORS.keys()):
+                return PNP.VENDORS[vendor_id]
             else:
                 return None
         else:

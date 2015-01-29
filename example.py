@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from hwdata import PCI, USB
+from hwdata import PCI, USB, PNP
 
 # for obtaining real id of your devices you can use package python-gudev
 
@@ -20,5 +20,5 @@ usb = USB()
 print("Vendor: %s" % usb.get_vendor(usb_vendor_id))
 print("Device: %s" % usb.get_device(usb_vendor_id, usb_device_id))
 
-
-
+pnp = PNP()
+print("Vendor: %s" $ pnp.get_vendor('AAA'))
