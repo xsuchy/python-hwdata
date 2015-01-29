@@ -39,7 +39,9 @@ class USB:
                 f = open(self.filename, encoding='ISO8859-1')
             else:
                 f = open(self.filename)
+            lineno = 0
             for line in f.readlines():
+                lineno += 1
                 l = line.split()
                 if line.startswith('#'):
                     if line.startswith('# List of known device classes, subclasses and protocols'):
@@ -54,7 +56,10 @@ class USB:
                         interface_name = ' '.join(l[1:])
                     else:
                         interface_name = ''
-                    USB.devices[vendor][1][device][0][interface_id] = interface_name
+                    try:
+                        USB.devices[vendor][1][device][0][interface_id] = interface_name
+                    except (TypeError):
+                        sys.stderr.write("Unknown line at line {0} in {1}.\n".format(lineno, self.filename))
                 elif line.startswith('\t'):
                     device = l[0].lower()
                     device_name = ' '.join(l[1:])
