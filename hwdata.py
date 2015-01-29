@@ -121,7 +121,6 @@ class PCI(object):
 
         if self.cache and not PCI.devices:
             # parse pci.ids
-            pcirec = {}
             PCI.devices = {}
             if inPy3k:
                 f = open(self.filename, encoding='ISO8859-1')
@@ -195,7 +194,6 @@ class PNP(object):
 
         if self.cache and not PNP.VENDORS:
             # parse pnp.ids
-            pcirec = {}
             PNP.VENDORS = {}
             if inPy3k:
                 f = open(self.filename, encoding='ISO8859-1')
