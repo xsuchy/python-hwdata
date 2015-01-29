@@ -207,8 +207,8 @@ class PNP(object):
                 elif len(l) == 0:
                     continue
                 else:
-                    id = l[0].upper()
-                    PNP.VENDORS[id] = ' '.join(l[1:])
+                    vendor_id = l[0].upper()
+                    PNP.VENDORS[vendor_id] = ' '.join(l[1:])
 
     def get_vendor(self, vendor_id):
         """ Return description of vendor. Parameter is 3 character long id of vendor.
