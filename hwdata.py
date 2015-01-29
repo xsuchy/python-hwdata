@@ -127,6 +127,7 @@ class PCI(object):
                 f = open(self.filename, encoding='ISO8859-1')
             else:
                 f = open(self.filename)
+            vendor = None
             for line in f.readlines():
                 l = line.split()
                 if line.startswith('#'):
