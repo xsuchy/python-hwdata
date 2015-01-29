@@ -40,6 +40,8 @@ class USB(object):
             else:
                 f = open(self.filename)
             lineno = 0
+            vendor = None
+            device = None
             for line in f.readlines():
                 lineno += 1
                 l = line.split()
