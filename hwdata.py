@@ -58,7 +58,7 @@ class USB(object):
                         interface_name = ''
                     try:
                         USB.devices[vendor][1][device][0][interface_id] = interface_name
-                    except (TypeError):
+                    except TypeError:
                         sys.stderr.write("Unknown line at line {0} in {1}.\n".format(lineno, self.filename))
                 elif line.startswith('\t'):
                     device = l[0].lower()
