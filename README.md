@@ -9,7 +9,7 @@ It allows you to get human readable description of USB and PCI devices.
 ```
 #!/usr/bin/python
 
-from hwdata import PCI, USB
+from hwdata import PCI, USB, PNP
 
 # for obtaining real id of your devices you can use package python-gudev
 
