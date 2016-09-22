@@ -17,6 +17,8 @@ inPy3k = sys.version_info[0] == 3
 
 """ Query hwdata database and return decription of vendor and/or device. """
 
+# pylint: disable=misplaced-bare-raise
+
 class USB(object):
     """ Interace to usb.ids from hwdata package """
     filename = '/usr/share/hwdata/usb.ids'
