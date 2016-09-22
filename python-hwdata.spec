@@ -35,6 +35,7 @@ Summary:	Python bindings to hwdata package
 Group:		Development/Languages
 
 BuildRequires:  python3-devel
+BuildRequires:  python3-pylint
 Requires:	hwdata
 
 %description -n python3-hwdata
@@ -74,6 +75,10 @@ popd
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%check
+%if 0%{?with_python3}
+python3-pylint hwdata.py example.py
+%endif
 
 %files
 %license LICENSE
