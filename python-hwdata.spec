@@ -9,7 +9,7 @@
 %endif
 
 Name:		python-hwdata
-Version:	2.3.3
+Version:	2.3.4
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -95,6 +95,13 @@ python3-pylint hwdata.py example.py
 %endif
 
 %changelog
+* Thu Sep 22 2016 Miroslav Suchý <miroslav@suchy.cz> 2.3.4-1
+- run pylint in %%check
+- require hwdata in python 3 package too (jdobes@redhat.com)
+- implement PNP interface
+- errors in usb.ids should not be fatal
+- change upstream url in setup.py
+
 * Wed Jan 28 2015 Miroslav Suchý <msuchy@redhat.com> 2.3.3-1
 - upstream location changed
 
