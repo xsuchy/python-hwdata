@@ -24,9 +24,6 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires: python-devel
 Requires:	hwdata
-%if 0%{?with_python3}
-BuildRequires:  python3-devel
-%endif
 
 %description
 Provide python interface to database stored in hwdata package.
@@ -36,6 +33,9 @@ It allows you to get human readable description of USB and PCI devices.
 %package -n python3-hwdata
 Summary:	Python bindings to hwdata package
 Group:		Development/Languages
+
+BuildRequires:  python3-devel
+Requires:	hwdata
 
 %description -n python3-hwdata
 Provide python interface to database stored in hwdata package.
