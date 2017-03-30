@@ -1,7 +1,3 @@
-%if ! (0%{?fedora} || 0%{?rhel} > 5)
-%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%endif
-#%global with_python2 1
 %if (0%{?fedora} || 0%{?rhel} > 6)
 %global with_python3 1
 %else
@@ -13,7 +9,6 @@ Version:	2.3.4
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
-Group:		Development/Libraries
 License:	GPLv2
 URL:		https://github.com/xsuchy/python-hwdata
 # git clone https://github.com/xsuchy/python-hwdata.git
@@ -32,7 +27,6 @@ It allows you to get human readable description of USB and PCI devices.
 %if 0%{?with_python3}
 %package -n python3-hwdata
 Summary:	Python bindings to hwdata package
-Group:		Development/Languages
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-pylint
@@ -63,7 +57,6 @@ popd
 %endif
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %if 0%{?with_python3}
@@ -73,7 +66,6 @@ popd
 %endif
 
 %clean
-rm -rf $RPM_BUILD_ROOT
 
 %check
 %if 0%{?with_python3}
