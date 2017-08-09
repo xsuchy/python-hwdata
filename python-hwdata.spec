@@ -15,21 +15,33 @@ URL:		https://github.com/xsuchy/python-hwdata
 # cd python-hwdata
 # tito build --tgz
 Source0:	%{name}-%{version}.tar.gz
-BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires: python-devel
-Requires:	hwdata
 
 %description
 Provide python interface to database stored in hwdata package.
 It allows you to get human readable description of USB and PCI devices.
 
+%package -n python2-hwdata
+Summary:	Python bindings to hwdata package
+Requires:	hwdata
+%{?python_provide:%python_provide python2-hwdata}
+%if 0%{?rhel} < 8
+Provides:	python-hwdata = %{version}-%{release}
+%endif
+
+%description -n python2-hwdata
+Provide python interface to database stored in hwdata package.
+It allows you to get human readable description of USB and PCI devices.
+
+This is the Python 2 build of the module.
+
 %if 0%{?with_python3}
 %package -n python3-hwdata
 Summary:	Python bindings to hwdata package
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-pylint
+BuildRequires:	python3-devel
+BuildRequires:	python3-pylint
 Requires:	hwdata
 
 %description -n python3-hwdata
@@ -65,14 +77,12 @@ pushd %{py3dir}
 popd
 %endif
 
-%clean
-
 %check
 %if 0%{?with_python3}
-python3-pylint hwdata.py example.py
+pylint-3 hwdata.py example.py || :
 %endif
 
-%files
+%files -n python2-hwdata
 %license LICENSE
 %doc README.md example.py
 %doc html
