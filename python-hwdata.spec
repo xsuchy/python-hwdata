@@ -5,7 +5,7 @@
 %endif
 
 Name:		python-hwdata
-Version:	2.3.4
+Version:	2.3.5
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -97,6 +97,11 @@ pylint-3 hwdata.py example.py || :
 %endif
 
 %changelog
+* Wed Aug 09 2017 Miroslav Suchý <msuchy@redhat.com> 2.3.5-1
+- create python2-hwdata subpackage
+- use dnf instead of yum in README
+- remove rhel5 compatibilities from spec
+
 * Thu Sep 22 2016 Miroslav Suchý <miroslav@suchy.cz> 2.3.4-1
 - run pylint in %%check
 - require hwdata in python 3 package too (jdobes@redhat.com)
