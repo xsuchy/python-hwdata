@@ -16,7 +16,11 @@ URL:		https://github.com/xsuchy/python-hwdata
 # tito build --tgz
 Source0:	%{name}-%{version}.tar.gz
 
+%if (0%{?fedora} > 27 || 0%{?rhel} > 7)
+BuildRequires: python2-devel
+%else
 BuildRequires: python-devel
+%endif
 
 %description
 Provide python interface to database stored in hwdata package.
