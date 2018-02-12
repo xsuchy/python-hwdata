@@ -5,7 +5,7 @@
 %endif
 
 Name:		python-hwdata
-Version:	2.3.5
+Version:	2.3.6
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -101,6 +101,9 @@ pylint-3 hwdata.py example.py || :
 %endif
 
 %changelog
+* Mon Feb 12 2018 Miroslav Suchý <msuchy@redhat.com> 2.3.6-1
+- Update Python 2 dependency declarations to new packaging standards
+
 * Wed Aug 09 2017 Miroslav Suchý <msuchy@redhat.com> 2.3.5-1
 - create python2-hwdata subpackage
 - use dnf instead of yum in README
