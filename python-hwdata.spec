@@ -1,12 +1,20 @@
-%if (0%{?fedora} || 0%{?rhel} > 6)
-%global with_python3 1
+%if 0%{?fedora} || 0%{?rhel} > 7
+# Enable python3 build by default
+%bcond_without python3
 %else
-%global with_python3 0
+%bcond_with python3
+%endif
+
+%if 0%{?rhel} > 7
+# Disable python2 build by default
+%bcond_with python2
+%else
+%bcond_without python2
 %endif
 
 Name:		python-hwdata
 Version:	2.3.6
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
 License:	GPLv2
@@ -16,18 +24,16 @@ URL:		https://github.com/xsuchy/python-hwdata
 # tito build --tgz
 Source0:	%{name}-%{version}.tar.gz
 
-%if (0%{?fedora} > 27 || 0%{?rhel} > 7)
-BuildRequires: python2-devel
-%else
-BuildRequires: python-devel
-%endif
-
 %description
 Provide python interface to database stored in hwdata package.
 It allows you to get human readable description of USB and PCI devices.
 
+%if %{with python2}
 %package -n python2-hwdata
 Summary:	Python bindings to hwdata package
+
+BuildRequires: python2-devel
+
 Requires:	hwdata
 %{?python_provide:%python_provide python2-hwdata}
 %if 0%{?rhel} < 8
@@ -39,8 +45,9 @@ Provide python interface to database stored in hwdata package.
 It allows you to get human readable description of USB and PCI devices.
 
 This is the Python 2 build of the module.
+%endif # with python2
 
-%if 0%{?with_python3}
+%if %{with python3}
 %package -n python3-hwdata
 Summary:	Python bindings to hwdata package
 
@@ -48,57 +55,65 @@ BuildRequires:	python3-devel
 BuildRequires:	python3-pylint
 Requires:	hwdata
 
+%{?python_provide:%python_provide python3-hwdata}
+
 %description -n python3-hwdata
 Provide python interface to database stored in hwdata package.
 It allows you to get human readable description of USB and PCI devices.
 
 This is the Python 3 build of the module.
-%endif
+%endif # with python3
 
 %prep
 %setup -q
 
-%if 0%{?with_python3}
+%if %{with python3}
 rm -rf %{py3dir}
 cp -a . %{py3dir}
-%endif
+%endif # with python3
 
 %build
-%{__python} setup.py build
+%if %{with python2}
+%py2_build
+%endif # with python2
 
-%if 0%{?with_python3}
+%if %{with python3}
 pushd %{py3dir}
-%{__python3} setup.py build
+%py3_build
 popd
-%endif
+%endif # with python3
 
 %install
-%{__python} setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%if %{with python2}
+%py2_install
+%endif # with python2
 
-%if 0%{?with_python3}
+%if %{with python3}
 pushd %{py3dir}
-%{__python3} setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%py3_install
 popd
-%endif
+%endif # with python3
 
 %check
-%if 0%{?with_python3}
+%if %{with python3}
 pylint-3 hwdata.py example.py || :
-%endif
+%endif # with python3
 
+%if %{with python2}
 %files -n python2-hwdata
 %license LICENSE
 %doc README.md example.py
 %doc html
-%{python_sitelib}/*
+%{python2_sitelib}/*
+%endif # with python2
 
-%if 0%{?with_python3}
+%if %{with python3}
 %files -n python3-hwdata
 %license LICENSE
 %doc README.md example.py
 %doc html
 %{python3_sitelib}/*
-%endif
+%endif # with python3
 
 %changelog
 * Mon Feb 12 2018 Miroslav Suchý <msuchy@redhat.com> 2.3.6-1
