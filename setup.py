@@ -2,7 +2,7 @@
 from distutils.core import setup, Extension
 
 setup (name = 'pciutils',
-       version = '2.3.6',
+       version = '2.3.7',
        description = 'Interface to hwdata',
        author = 'Miroslav Suchý',
        author_email = 'msuchy@redhat.com',

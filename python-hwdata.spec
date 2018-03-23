@@ -13,7 +13,7 @@
 %endif
 
 Name:		python-hwdata
-Version:	2.3.6
+Version:	2.3.7
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -116,6 +116,9 @@ pylint-3 hwdata.py example.py || :
 %endif # with python3
 
 %changelog
+* Fri Mar 23 2018 Miroslav Suchý <msuchy@redhat.com> 2.3.7-1
+- remove python2 subpackage for F30+
+
 * Mon Feb 12 2018 Miroslav Suchý <msuchy@redhat.com> 2.3.6-1
 - Update Python 2 dependency declarations to new packaging standards
 
