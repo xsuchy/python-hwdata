@@ -5,7 +5,7 @@
 %bcond_with python3
 %endif
 
-%if 0%{?rhel} > 7
+%if 0%{?rhel} > 7 || 0%{?fedora} > 29
 # Disable python2 build by default
 %bcond_with python2
 %else
@@ -14,7 +14,7 @@
 
 Name:		python-hwdata
 Version:	2.3.6
-Release:	2%{?dist}
+Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
 License:	GPLv2
