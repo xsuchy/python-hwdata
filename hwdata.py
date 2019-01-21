@@ -87,7 +87,7 @@ class USB(object):
             else:
                 return None
         else:
-            raise # not implemented yet
+            raise NotImplementedError()
 
     def get_device(self, vendor, device):
         """ Return description of device. Parameters are two byte code variables in hexa.
@@ -104,7 +104,7 @@ class USB(object):
             else:
                 return None
         else:
-            raise # not implemented yet
+            raise NotImplementedError()
 
 class PCI(object):
     """ Interace to pci.ids from hwdata package """
@@ -160,7 +160,7 @@ class PCI(object):
             else:
                 return None
         else:
-            raise # not implemented yet
+            raise NotImplementedError()
 
     def get_device(self, vendor, device):
         """ Return description of device. Parameters are two byte code variables in hexa.
@@ -177,7 +177,7 @@ class PCI(object):
             else:
                 return None
         else:
-            raise # not implemented yet
+            raise NotImplementedError()
 
 class PNP(object):
     """ Interace to pnp.ids from hwdata package """
@@ -222,4 +222,4 @@ class PNP(object):
             else:
                 return None
         else:
-            raise # not implemented yet
+            raise NotImplementedError()
