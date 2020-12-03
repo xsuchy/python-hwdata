@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from distutils.core import setup, Extension
 
-setup (name = 'pciutils',
+setup (name = 'hwdata',
        version = '2.3.7',
        description = 'Interface to hwdata',
        author = 'Miroslav Suchý',

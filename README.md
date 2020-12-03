@@ -1,8 +1,10 @@
 # python-hwdata
 
-Provides python interface to database stored in [hwdata](https://fedorahosted.org/hwdata/) package.
+Provides python interface to database stored in [hwdata](https://github.com/vcrhonek/hwdata) package.
 It allows you to get human readable description of USB and PCI devices.
 
+[![PyPI version](https://badge.fury.io/py/hwdata.svg)](https://pypi.org/project/hwdata/)
+[![PyPI - License](https://img.shields.io/pypi/l/hwdata)](https://opensource.org/licenses/)
 
 ## Example
 
@@ -54,3 +56,7 @@ you will get latest rpm package.
 ## Distributions
 
 This package is present in [Fedora and EPEL](http://koji.fedoraproject.org/koji/packageinfo?packageID=10271). You should be able to just `dnf install python-hwdata`.
+
+## License
+
+GPLv2+
