@@ -2,7 +2,7 @@
 from distutils.core import setup, Extension
 
 setup (name = 'hwdata',
-       version = '2.3.7',
+       version = '2.3.8',
        description = 'Interface to hwdata',
        author = 'Miroslav Suchý',
        author_email = 'msuchy@redhat.com',
