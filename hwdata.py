@@ -129,6 +129,7 @@ class PCI(object):
             else:
                 f = open(self.filename)
             vendor = None
+            device = None
             for line in f.readlines():
                 l = line.split()
                 if line.startswith('#'):
@@ -136,11 +137,13 @@ class PCI(object):
                 elif len(l) == 0:
                     continue
                 elif line.startswith('\t\t'):
-                    continue
+                    subsystem = '{0}:{1}'.format(l[0].lower(), l[1].lower())
+                    subsystem_name = ' '.join(l[2:])
+                    PCI.devices[vendor][1][device][1][subsystem] = subsystem_name
                 elif line.startswith('\t'):
                     device = l[0].lower()
                     device_name = ' '.join(l[1:])
-                    PCI.devices[vendor][1][device] = device_name
+                    PCI.devices[vendor][1][device] = [device_name, {}]
                 else:
                     vendor = l[0].lower()
                     vendor_name = ' '.join(l[1:])
@@ -171,7 +174,30 @@ class PCI(object):
         if self.cache:
             if vendor in list(PCI.devices.keys()):
                 if device in list(PCI.devices[vendor][1].keys()):
-                    return PCI.devices[vendor][1][device]
+                    return PCI.devices[vendor][1][device][0]
+                else:
+                    return None
+            else:
+                return None
+        else:
+            raise NotImplementedError()
+
+    def get_subsystem(self, vendor, device, subsystem):
+        """ Return description of subsystem.
+            'vendor' and 'device' are two byte code variables in hexa.
+            'subsystem' is two colon separated hexa values.
+            If subsystem is unknown None is returned.
+        """
+        vendor = vendor.lower()
+        device = device.lower()
+        subsystem = subsystem.lower()
+        if self.cache:
+            if vendor in list(PCI.devices.keys()):
+                if device in list(PCI.devices[vendor][1].keys()):
+                    if subsystem in list(PCI.devices[vendor][1][device][1].keys()):
+                        return PCI.devices[vendor][1][device][1][subsystem]
+                    else:
+                        return None
                 else:
                     return None
             else:
