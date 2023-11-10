@@ -19,7 +19,7 @@ inPy3k = sys.version_info[0] == 3
 
 # pylint: disable=misplaced-bare-raise
 
-class USB(object):
+class USB:
     """ Interace to usb.ids from hwdata package """
     filename = '/usr/share/hwdata/usb.ids'
     devices = None
@@ -106,7 +106,7 @@ class USB(object):
         else:
             raise NotImplementedError()
 
-class PCI(object):
+class PCI:
     """ Interace to pci.ids from hwdata package """
     filename = '/usr/share/hwdata/pci.ids'
     devices = None
@@ -205,7 +205,7 @@ class PCI(object):
         else:
             raise NotImplementedError()
 
-class PNP(object):
+class PNP:
     """ Interace to pnp.ids from hwdata package """
     filename = '/usr/share/hwdata/pnp.ids'
     VENDORS = None
