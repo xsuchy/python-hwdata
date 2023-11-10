@@ -1,19 +1,5 @@
-%if 0%{?fedora} || 0%{?rhel} > 7
-# Enable python3 build by default
-%bcond_without python3
-%else
-%bcond_with python3
-%endif
-
-%if 0%{?rhel} > 7 || 0%{?fedora} > 29
-# Disable python2 build by default
-%bcond_with python2
-%else
-%bcond_without python2
-%endif
-
 Name:		python-hwdata
-Version:	2.3.8
+Version:	2.4.0
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -28,26 +14,6 @@ Source0:	%{name}-%{version}.tar.gz
 Provide python interface to database stored in hwdata package.
 It allows you to get human readable description of USB and PCI devices.
 
-%if %{with python2}
-%package -n python2-hwdata
-Summary:	Python bindings to hwdata package
-
-BuildRequires: python2-devel
-
-Requires:	hwdata
-%{?python_provide:%python_provide python2-hwdata}
-%if 0%{?rhel} < 8
-Provides:	python-hwdata = %{version}-%{release}
-%endif
-
-%description -n python2-hwdata
-Provide python interface to database stored in hwdata package.
-It allows you to get human readable description of USB and PCI devices.
-
-This is the Python 2 build of the module.
-%endif # with python2
-
-%if %{with python3}
 %package -n python3-hwdata
 Summary:	Python bindings to hwdata package
 
@@ -62,58 +28,31 @@ Provide python interface to database stored in hwdata package.
 It allows you to get human readable description of USB and PCI devices.
 
 This is the Python 3 build of the module.
-%endif # with python3
 
 %prep
 %setup -q
 
-%if %{with python3}
 rm -rf %{py3dir}
 cp -a . %{py3dir}
-%endif # with python3
 
 %build
-%if %{with python2}
-%py2_build
-%endif # with python2
-
-%if %{with python3}
 pushd %{py3dir}
 %py3_build
 popd
-%endif # with python3
 
 %install
-%if %{with python2}
-%py2_install
-%endif # with python2
-
-%if %{with python3}
 pushd %{py3dir}
 %py3_install
 popd
-%endif # with python3
 
 %check
-%if %{with python3}
 pylint-3 hwdata.py example.py || :
-%endif # with python3
 
-%if %{with python2}
-%files -n python2-hwdata
-%license LICENSE
-%doc README.md example.py
-%doc html
-%{python2_sitelib}/*
-%endif # with python2
-
-%if %{with python3}
 %files -n python3-hwdata
 %license LICENSE
 %doc README.md example.py
 %doc html
 %{python3_sitelib}/*
-%endif # with python3
 
 %changelog
 * Wed Nov 30 2022 Miroslav Suchý <msuchy@redhat.com> 2.3.8-1
