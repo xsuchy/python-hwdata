@@ -13,7 +13,6 @@
 # in this software or its documentation.
 #
 import sys
-inPy3k = sys.version_info[0] == 3
 
 """ Query hwdata database and return decription of vendor and/or device. """
 
@@ -37,10 +36,7 @@ class USB:
         if self.cache and not USB.devices:
             # parse usb.ids
             USB.devices = {}
-            if inPy3k:
-                f = open(self.filename, encoding='ISO8859-1')
-            else:
-                f = open(self.filename)
+            f = open(self.filename, encoding='ISO8859-1')
             lineno = 0
             vendor = None
             device = None
@@ -124,10 +120,7 @@ class PCI:
         if self.cache and not PCI.devices:
             # parse pci.ids
             PCI.devices = {}
-            if inPy3k:
-                f = open(self.filename, encoding='ISO8859-1')
-            else:
-                f = open(self.filename)
+            f = open(self.filename, encoding='ISO8859-1')
             vendor = None
             device = None
             for line in f.readlines():
@@ -223,10 +216,7 @@ class PNP:
         if self.cache and not PNP.VENDORS:
             # parse pnp.ids
             PNP.VENDORS = {}
-            if inPy3k:
-                f = open(self.filename, encoding='ISO8859-1')
-            else:
-                f = open(self.filename)
+            f = open(self.filename, encoding='ISO8859-1')
             for line in f.readlines():
                 l = line.split()
                 if line.startswith('#'):
