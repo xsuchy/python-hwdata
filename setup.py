@@ -6,6 +6,6 @@ setup (name = 'hwdata',
        description = 'Interface to hwdata',
        author = 'Miroslav Suchý',
        author_email = 'msuchy@redhat.com',
-       license = 'GPLv2',
+       license = 'setup.py',
        url = 'https://github.com/xsuchy/python-hwdata',
        py_modules = ['hwdata'])

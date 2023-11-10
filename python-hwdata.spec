@@ -17,7 +17,7 @@ Version:	2.3.8
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
-License:	GPL-2.0-only
+License:	GPL-2.0-or-later
 URL:		https://github.com/xsuchy/python-hwdata
 # git clone https://github.com/xsuchy/python-hwdata.git
 # cd python-hwdata

@@ -61,4 +61,4 @@ This package is present in [Fedora and EPEL](http://koji.fedoraproject.org/koji/
 
 ## License
 
-GPLv2+
+GPL-2.0-or-later
