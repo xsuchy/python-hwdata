@@ -1,5 +1,5 @@
 Name:		python-hwdata
-Version:	2.4.0
+Version:	2.4.1
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -55,6 +55,12 @@ pylint-3 hwdata.py example.py || :
 %{python3_sitelib}/*
 
 %changelog
+* Fri Nov 10 2023 Miroslav Suchý <msuchy@redhat.com> 2.4.1-1
+- remove python2 code
+- spec: generate only python3 package
+- use SPDX identifier for license
+- add PCI subsystem support (jussi.kuokkanen@protonmail.com)
+
 * Wed Nov 30 2022 Miroslav Suchý <msuchy@redhat.com> 2.3.8-1
 - use spdx license
 - update README
