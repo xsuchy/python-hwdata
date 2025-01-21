@@ -1,5 +1,5 @@
 Name:		python-hwdata
-Version:	2.4.1
+Version:	2.4.2
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -49,6 +49,9 @@ pylint-3 hwdata.py example.py || :
 %{python3_sitelib}/*
 
 %changelog
+* Tue Jan 21 2025 Miroslav Suchý <msuchy@redhat.com> 2.4.2-1
+- modernize setup.py (msuchy@redhat.com)
+
 * Fri Nov 10 2023 Miroslav Suchý <msuchy@redhat.com> 2.4.1-1
 - remove python2 code
 - spec: generate only python3 package
