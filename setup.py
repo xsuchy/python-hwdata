@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from distutils.core import setup, Extension
+from setuptools import setup
 
 setup (name = 'hwdata',
        version = '2.4.1',
