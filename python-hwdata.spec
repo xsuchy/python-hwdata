@@ -1,5 +1,5 @@
 Name:		python-hwdata
-Version:	2.4.2
+Version:	2.4.3
 Release:	1%{?dist}
 Summary:	Python bindings to hwdata package
 BuildArch:  noarch
@@ -49,6 +49,10 @@ This is the Python 3 build of the module.
 %{python3_sitelib}/*
 
 %changelog
+* Mon Jun 09 2025 Miroslav Suchý <msuchy@redhat.com> 2.4.3-1
+- do not run linter in check section (msuchy@redhat.com)
+- modernize specfile (msuchy@redhat.com)
+
 * Tue Jan 21 2025 Miroslav Suchý <msuchy@redhat.com> 2.4.2-1
 - modernize setup.py (msuchy@redhat.com)
 
