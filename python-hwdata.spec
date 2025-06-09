@@ -18,8 +18,6 @@ It allows you to get human readable description of USB and PCI devices.
 Summary:	Python bindings to hwdata package
 
 BuildRequires:	python3-devel
-BuildRequires:	python3-pylint
-Requires:	hwdata
 
 %{?python_provide:%python_provide python3-hwdata}
 
@@ -42,7 +40,7 @@ This is the Python 3 build of the module.
 %pyproject_install
 
 %check
-pylint-3 hwdata.py example.py || :
+%py3_check_import hwdata
 
 %files -n python3-hwdata
 %license LICENSE
